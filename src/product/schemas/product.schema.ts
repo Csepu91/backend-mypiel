@@ -1,4 +1,4 @@
-import { Schema, Prop } from '@nestjs/mongoose';
+import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 
 export enum productStatus {
     IN_USE = 'IN_USE',
@@ -18,14 +18,16 @@ export class Product {
     marca: string;
 
     @Prop()
-    Pactivo: number;
+    Pactivo: string;
 
     @Prop()
-    Enfermedad: number;
+    Enfermedad: string;
 
     @Prop()
     idImagen: string;
 
-    @Prop()
+    @Prop({ default: productStatus.ON_DISPLAY })
     status: productStatus;
 }
+
+export const ProductSchema = SchemaFactory.createForClass(Product);
