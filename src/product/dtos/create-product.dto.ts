@@ -1,10 +1,8 @@
-import { IsString, IsNotEmpty, IsNumber, IsEnum, IsOptional } from 'class-validator';
+import { IsString, IsNotEmpty, IsOptional, IsEnum } from 'class-validator';
 import { productEstado } from '../schemas/product.schema';
 
+
 export class CreateProductDto {
-    @IsNumber()
-    @IsNotEmpty()
-    idProducto: number;
 
     @IsOptional()
     @IsString()

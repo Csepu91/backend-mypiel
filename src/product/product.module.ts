@@ -7,10 +7,7 @@ import { ProductController } from './product.controller';
 @Module({
     imports: [
         MongooseModule.forFeature([
-            {
-                name: Product.name,
-                schema: ProductSchema,
-            },
+            { name: Product.name, schema: ProductSchema },
         ]),
     ],
     controllers: [ProductController],

@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Product } from './schemas/product.schema';
 import { Model } from 'mongoose';
@@ -22,19 +22,36 @@ export class ProductService {
 
     // Servicio que encuentre un producto por su id
     async findOne(id: string) {
-        return this.productModel.findById(id).exec();
+        const productFound = await this.productModel.findById(id).exec();
+
+        if (!productFound) {
+            throw new NotFoundException(`Producto con id: ${id} no encontrado`);
+        }
+
+        return productFound
     }
 
     // Servicio que seleccione un producto y actulice
     async update(id: string, product: UpdateProduct) {
-        return this.productModel.findByIdAndUpdate(id, product, {
-            new: true,
-        }).exec();
+        const updatedProduct = await this.productModel.findByIdAndUpdate(id, product, { new: true }).exec();
+
+        if (!updatedProduct) {
+            throw new NotFoundException(`Producto con id: ${id} no encontrado`);
+        }
+
+        return updatedProduct;
     }
 
     // Servicio para la eliminación de un producto por su nombre
     async delete(id: string) {
-        return this.productModel.findByIdAndDelete(id).exec();
+        const productDeleted = await this.productModel.findByIdAndDelete(id).exec();
+
+        if (!productDeleted) {
+            throw new NotFoundException(`Producto con id: ${id} no encontrado`);
+        }
+
+        console.log(`Producto eliminado: ${JSON.stringify(productDeleted)}`);
+        return productDeleted;
     }
 
     /*     // Servicio que permite encontrar todos los productos coincidentes con el nombre indicado

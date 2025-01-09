@@ -2,22 +2,20 @@ POST http://localhost:3000/product HTTP/1.1
 Content-Type: application/json
 
 {
-    "idProducto": 1,
-    "nombre": "pruebanombre8",
-    "marca": "pruebanombre",
+    "nombre": "AutdoID4sds",
+    "marca": "",
     "pActivo": "pruebanombre",
     "enfermedad": "pruebanombre",
     "idImagen": "pruebanombre"
 }
 
 ###
-PUT http://localhost:3000/product/677dd189d878ae323c6f5d5f HTTP/1.1
+PUT http://localhost:3000/product/677f128bd02cabbd8d794cea HTTP/1.1
 Content-Type: application/json
 
 {
     "estado": "IN_USE"
 }
-
 
 ###
 GET http://localhost:3000/product/ HTTP/1.1
@@ -25,12 +23,12 @@ Content-Type: application/json
 
 
 ###
-GET http://localhost:3000/product/677dcd8f06437c3545d6618c HTTP/1.1
+GET http://localhost:3000/product/677f128bd02cabbd8d794cea HTTP/1.1
 Content-Type: application/json
 
 
 
 ###
-DELETE  http://localhost:3000/product/677dcc553eb6e2c5d47eb658 HTTP/1.1
+DELETE  http://localhost:3000/product/677f128bd02cabbd8d794cea HTTP/1.1
 Content-Type: application/json
 
