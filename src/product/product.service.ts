@@ -9,18 +9,15 @@ import { UpdateProduct } from './dtos/update-product.dto';
 export class ProductService {
     constructor(@InjectModel(Product.name) private productModel: Model<Product>) { }
 
-    // Servicio de creación de productos
     async create(product: CreateProductDto) {
         const createdProduct = new this.productModel(product);
         return createdProduct.save();
     }
 
-    // Servicio que encuentre todos los productos
     async findAll() {
         return this.productModel.find().exec();
     }
 
-    // Servicio que encuentre un producto por su id
     async findOne(id: string) {
         const productFound = await this.productModel.findById(id).exec();
 
@@ -31,7 +28,7 @@ export class ProductService {
         return productFound
     }
 
-    // Servicio que seleccione un producto y actulice
+
     async update(id: string, product: UpdateProduct) {
         const updatedProduct = await this.productModel.findByIdAndUpdate(id, product, { new: true }).exec();
 
@@ -42,7 +39,7 @@ export class ProductService {
         return updatedProduct;
     }
 
-    // Servicio para la eliminación de un producto por su nombre
+
     async delete(id: string) {
         const productDeleted = await this.productModel.findByIdAndDelete(id).exec();
 
@@ -51,34 +48,8 @@ export class ProductService {
         }
 
         console.log(`Producto eliminado: ${JSON.stringify(productDeleted)}`);
+
         return productDeleted;
     }
-
-    /*     // Servicio que permite encontrar todos los productos coincidentes con el nombre indicado
-        async findAllByNombre(nombre: string) {
-            return this.productModel.find({ nombre }).exec();
-        }
-    
-        // Servicio que permite encontrar todos los productos coincidentes con la marca indicada
-        async findAllByMarca(marca: string) {
-            return this.productModel.find({ marca }).exec();
-        }
-    
-        // Servicio que permite encontrar todos los productos coincidentes con la enfermedad indicada
-        async findAllByEnfermedad(enfermedad: string) {
-            return this.productModel.find({ enfermedad }).exec();
-        }
-    
-        // Servicio que permite encontrar todos los productos coincidentes con el pActivo indicado
-        async findAllByPActivo(pActivo: string) {
-            return this.productModel.find({ pActivo }).exec();
-        } */
-
-
-
-    /*     //Servicio que permite encontrar todos los productos en estado IN_USE
-        async findAllInUse() {
-            return this.productModel.find({ estado: 'IN_USE' }).exec();
-        } */
 
 }

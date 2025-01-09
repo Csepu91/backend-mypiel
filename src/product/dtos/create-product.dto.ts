@@ -4,13 +4,11 @@ import { productEstado } from '../schemas/product.schema';
 
 export class CreateProductDto {
 
-    @IsOptional()
     @IsString()
-    nombre?: string;
+    nombre: string;
 
-    @IsOptional()
     @IsString()
-    marca?: string;
+    marca: string;
 
     @IsOptional()
     @IsString()
@@ -20,11 +18,9 @@ export class CreateProductDto {
     @IsString()
     enfermedad?: string;
 
-    @IsOptional()
     @IsString()
     idImagen?: string;
 
     @IsEnum(productEstado)
-    @IsOptional()
-    estado?: productEstado;
+    estado: productEstado;
 }

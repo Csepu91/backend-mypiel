@@ -2,7 +2,7 @@ POST http://localhost:3000/product HTTP/1.1
 Content-Type: application/json
 
 {
-    "nombre": "AutdoID4sds",
+    "nombre": "Prueba con Auth",
     "marca": "",
     "pActivo": "pruebanombre",
     "enfermedad": "pruebanombre",

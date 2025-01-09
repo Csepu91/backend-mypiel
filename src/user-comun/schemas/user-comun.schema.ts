@@ -1,7 +1,9 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 
+export type UserComunDocument = UserComun & Document;
 
-@Schema()
+
+@Schema({ timestamps: true })
 export class UserComun {
 
 
@@ -18,7 +20,7 @@ export class UserComun {
     correo: string;
 
     @Prop()
-    fCreacion: string;
+    password: string;
 
 }
 

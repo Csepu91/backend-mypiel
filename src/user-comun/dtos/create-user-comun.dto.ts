@@ -7,11 +7,9 @@ export class CreateUserComunDto {
     @IsNotEmpty()
     nombre: string;
 
-
     @IsString()
     @IsNotEmpty()
     apellido1: string;
-
 
     @IsString()
     @IsOptional()
@@ -23,7 +21,7 @@ export class CreateUserComunDto {
     correo: string;
 
     @IsString()
-    @IsOptional()
-    fCreacion?: string;
+    @IsNotEmpty()
+    password: string;
 
 }

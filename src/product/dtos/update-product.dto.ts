@@ -25,5 +25,5 @@ export class UpdateProduct {
 
     @IsEnum(productEstado)
     @IsOptional()
-    estado?: productEstado;
+    estado: productEstado = productEstado.IN_USE;
 }

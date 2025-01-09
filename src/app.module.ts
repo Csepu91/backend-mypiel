@@ -12,6 +12,7 @@ import { UserProfesionalService } from './user-profesional/user-profesional.serv
 import { UserProfesionalModule } from './user-profesional/user-profesional.module';
 import { AtencionController } from './atencion/atencion.controller';
 import { AtencionModule } from './atencion/atencion.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [MongooseModule.forRoot(
@@ -22,6 +23,7 @@ import { AtencionModule } from './atencion/atencion.module';
     UserExtendModule,
     UserProfesionalModule,
     AtencionModule,
+    AuthModule,
   ],
   controllers: [AppController, UserExtendController, AtencionController],
   providers: [AppService, PostService, UserProfesionalService],
