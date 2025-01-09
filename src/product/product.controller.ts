@@ -2,12 +2,10 @@ import {
     Controller,
     Post,
     Body,
-    ValidationPipe,
     Put,
     Get,
     Delete,
     Param,
-    UsePipes
 } from '@nestjs/common';
 import { ProductService } from './product.service';
 import { CreateProductDto } from './dtos/create-product.dto';
