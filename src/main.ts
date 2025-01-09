@@ -13,7 +13,7 @@ async function bootstrap() {
   }));
 
   const config = new DocumentBuilder()
-    .addBasicAuth()
+    .addBearerAuth()
     .setTitle('API My titulo Swagger')
     .setDescription('API de la aplicación')
     .setVersion('1.0')
