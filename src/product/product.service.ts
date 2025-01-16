@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Product } from './schemas/product.schema';
 import { Model } from 'mongoose';
@@ -9,10 +9,10 @@ import { UpdateProduct } from './dtos/update-product.dto';
 export class ProductService {
     constructor(@InjectModel(Product.name) private productModel: Model<Product>) { }
 
-    async create(product: CreateProductDto) {
-        const createdProduct = new this.productModel(product);
-        return createdProduct.save();
-    }
+    /*     async create(product: CreateProductDto) {
+            const createdProduct = new this.productModel(product);
+            return createdProduct.save();
+        } */
 
     async findAll() {
         return this.productModel.find().exec();
@@ -29,15 +29,62 @@ export class ProductService {
     }
 
 
-    async update(id: string, product: UpdateProduct) {
-        const updatedProduct = await this.productModel.findByIdAndUpdate(id, product, { new: true }).exec();
+    /*     async findByName(nombre: string) {
+            const productFound = await this.productModel.findOne({ nombre }).exec();
+    
+            if (!productFound) {
+                throw new NotFoundException(`Producto con nombre: ${nombre} no encontrado`);
+            }
+    
+            return productFound;
+        }
+    
+    
+        async findByPartialName(partialName: string) {
+            if (partialName.length < 3) {
+                throw new BadRequestException('El nombre parcial debe tener al menos 3 letras');
+            }
+    
+            const productsFound = await this.productModel.find({ nombre: { $regex: partialName, $options: 'i' } }).exec();
+    
+            if (productsFound.length === 0) {
+                throw new NotFoundException(`No se encontraron productos con el nombre parcial: ${partialName}`);
+            }
+    
+            return productsFound;
+        } */
 
-        if (!updatedProduct) {
-            throw new NotFoundException(`Producto con id: ${id} no encontrado`);
+    async findByText(text: string) {
+        if (text.length < 3) {
+            throw new BadRequestException('El texto debe tener al menos 3 caracteres');
         }
 
-        return updatedProduct;
+        const productsFound = await this.productModel.find({
+            $or: [
+                { nombre: { $regex: text, $options: 'i' } },
+                { marca: { $regex: text, $options: 'i' } },
+                { pActivo: { $regex: text, $options: 'i' } },
+                { enfermedad: { $regex: text, $options: 'i' } }
+            ]
+        }).exec();
+
+        if (productsFound.length === 0) {
+            throw new NotFoundException(`No se encontraron productos con el texto: ${text}`);
+        }
+
+        return productsFound;
     }
+
+
+    /*     async update(id: string, product: UpdateProduct) {
+            const updatedProduct = await this.productModel.findByIdAndUpdate(id, product, { new: true }).exec();
+    
+            if (!updatedProduct) {
+                throw new NotFoundException(`Producto con id: ${id} no encontrado`);
+            }
+    
+            return updatedProduct;
+        } */
 
 
     async delete(id: string) {

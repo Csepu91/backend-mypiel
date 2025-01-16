@@ -12,12 +12,12 @@ export class UpdateProduct {
     marca?: string;
 
     @IsOptional()
-    @IsString()
-    pActivo?: string;
+    @IsString({ each: true })
+    pActivo?: string[];
 
     @IsOptional()
-    @IsString()
-    enfermedad?: string;
+    @IsString({ each: true })
+    enfermedad?: string[];
 
     @IsOptional()
     @IsString()

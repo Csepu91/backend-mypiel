@@ -19,11 +19,11 @@ import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 export class ProductController {
     constructor(private productService: ProductService) { }
 
-    @Post()
-    @ApiOperation({ summary: 'Aplicación del servicio de creación de productos' })
-    async create(@Body() createProduct: CreateProductDto) {
-        return this.productService.create(createProduct);
-    }
+    /*     @Post()
+        @ApiOperation({ summary: 'Aplicación del servicio de creación de productos' })
+        async create(@Body() createProduct: CreateProductDto) {
+            return this.productService.create(createProduct);
+        } */
 
     @Get()
     @ApiOperation({ summary: 'Ejecución del servicio que muestra todos los productos' })
@@ -37,13 +37,32 @@ export class ProductController {
         return this.productService.findOne(id);
     }
 
-    @Put(':id')
-    @ApiOperation({ summary: 'Ejecución del servicio que modifica el producto identificado por id' })
-    @UseGuards(JwtAuthGuard)
-    @ApiBearerAuth()
-    async update(@Param('id') id: string, @Body() updateProduct: UpdateProduct) {
-        return this.productService.update(id, updateProduct);
+    /*     @Get('nombre/:nombre')
+        @ApiOperation({ summary: 'Buscar un producto por nombre' })
+        async findByName(@Param('nombre') nombre: string) {
+            return this.productService.findByName(nombre);
+        }
+    
+        @Get('buscar/:partialName')
+        @ApiOperation({ summary: 'Buscar productos por una parte del nombre' })
+        async findByPartialName(@Param('partialName') partialName: string) {
+            return this.productService.findByPartialName(partialName);
+        } */
+
+    @Get('buscar/:text')
+    @ApiOperation({ summary: 'Buscar productos por ingrediente activo o enfermedad' })
+    async findByActiveIngredientOrDisease(@Param('text') text: string) {
+        return this.productService.findByText(text);
     }
+
+
+    /*     @Put(':id')
+        @ApiOperation({ summary: 'Ejecución del servicio que modifica el producto identificado por id' })
+        @UseGuards(JwtAuthGuard)
+        @ApiBearerAuth()
+        async update(@Param('id') id: string, @Body() updateProduct: UpdateProduct) {
+            return this.productService.update(id, updateProduct);
+        } */
 
     @Delete(':id')
     @ApiOperation({ summary: 'Ejecución del servicio que elimina el producto identificado por id' })

@@ -11,16 +11,17 @@ export class CreateProductDto {
     marca: string;
 
     @IsOptional()
-    @IsString()
-    pActivo?: string;
+    @IsString({ each: true })
+    pActivo?: string[];
 
     @IsOptional()
-    @IsString()
-    enfermedad?: string;
+    @IsString({ each: true })
+    enfermedad?: string[];
 
     @IsString()
     idImagen?: string;
 
+    @IsOptional()
     @IsEnum(productEstado)
-    estado: productEstado;
+    estado?: productEstado;
 }

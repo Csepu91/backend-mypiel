@@ -16,11 +16,11 @@ export class Product {
     @Prop()
     marca: string;
 
-    @Prop()
-    pActivo: string;
+    @Prop([String])
+    pActivo: string[];
 
-    @Prop()
-    enfermedad: string;
+    @Prop([String])
+    enfermedad: string[];
 
     @Prop()
     idImagen: string;
