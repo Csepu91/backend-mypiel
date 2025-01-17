@@ -18,18 +18,21 @@ export class AuthService {
 
 
   async register(registerAuthDto: RegisterAuthDto) {
-    const { password, correo } = registerAuthDto;
+    const { correo, password } = registerAuthDto;
 
     const findUserComun = await this.userComunModel.findOne({ correo });
+
     if (findUserComun) {
       throw new UnauthorizedException(`Usuario con correo:"${correo}" ya existe`);
     }
 
     const plainToHash = await hash(password, 10);
+
     registerAuthDto = { ...registerAuthDto, password: plainToHash };
 
     return this.userComunModel.create(registerAuthDto);
   }
+
 
   async login(loginAuthDto: LoginAuthDto) {
     const { correo, password } = loginAuthDto;

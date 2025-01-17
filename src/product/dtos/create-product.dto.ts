@@ -1,4 +1,4 @@
-import { IsString, IsNotEmpty, IsOptional, IsEnum } from 'class-validator';
+import { IsString, IsNotEmpty, IsOptional, IsEnum, IsUrl } from 'class-validator';
 import { productEstado } from '../schemas/product.schema';
 
 
@@ -18,10 +18,8 @@ export class CreateProductDto {
     @IsString({ each: true })
     enfermedad?: string[];
 
-    @IsString()
-    idImagen?: string;
+    @IsUrl()
+    urlImagen: string;
 
-    @IsOptional()
-    @IsEnum(productEstado)
-    estado?: productEstado;
+
 }

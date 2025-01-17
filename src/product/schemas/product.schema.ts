@@ -23,7 +23,7 @@ export class Product {
     enfermedad: string[];
 
     @Prop()
-    idImagen: string;
+    urlImagen: string;
 
     @Prop({ default: productEstado.ON_DISPLAY })
     estado: productEstado;

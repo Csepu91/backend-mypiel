@@ -1,7 +1,7 @@
-import { IsString, IsNotEmpty, IsNumber, IsEnum, IsOptional } from 'class-validator';
+import { IsString, IsNotEmpty, IsNumber, IsEnum, IsOptional, IsUrl } from 'class-validator';
 import { productEstado } from '../schemas/product.schema';
 
-export class UpdateProduct {
+export class UpdateProductDto {
 
     @IsOptional()
     @IsString()
@@ -20,8 +20,8 @@ export class UpdateProduct {
     enfermedad?: string[];
 
     @IsOptional()
-    @IsString()
-    idImagen?: string;
+    @IsUrl()
+    urlImagen?: string;
 
     @IsEnum(productEstado)
     @IsOptional()

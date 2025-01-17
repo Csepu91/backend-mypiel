@@ -1,7 +1,9 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 
-export type UserComunDocument = UserComun & Document;
-
+export enum tipeUSer {
+    COMUN = 'COMUN',
+    EXTEND = 'EXTEND',
+}
 
 @Schema({ timestamps: true })
 export class UserComun {
@@ -22,6 +24,11 @@ export class UserComun {
     @Prop()
     password: string;
 
+    @Prop({ default: tipeUSer.COMUN })
+    tipe: tipeUSer;
+
 }
+
+export type UserComunDocument = UserComun & Document;
 
 export const UserComunSchema = SchemaFactory.createForClass(UserComun);
