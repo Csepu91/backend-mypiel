@@ -1,7 +1,9 @@
-import { IsString, IsNotEmpty, IsNumber, IsOptional, IsEmail } from 'class-validator';
+import { Type } from 'class-transformer';
+import { IsString, IsNotEmpty, IsNumber, IsOptional, IsEmail, IsDate, ValidateNested } from 'class-validator';
 
 
 export class CreateUserComunDto {
+
 
     @IsString()
     @IsNotEmpty()
@@ -19,9 +21,5 @@ export class CreateUserComunDto {
     @IsEmail()
     @IsNotEmpty()
     correo: string;
-
-    @IsString()
-    @IsNotEmpty()
-    password: string;
 
 }

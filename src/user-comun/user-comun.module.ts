@@ -11,7 +11,8 @@ import { UserComun, UserComunSchema } from './schemas/user-comun.schema';
     ])
   ],
   controllers: [UserComunController],
-  providers: [UserComunService]
+  providers: [UserComunService],
+  exports: [UserComunService, MongooseModule]
 })
 
 export class UserComunModule { }

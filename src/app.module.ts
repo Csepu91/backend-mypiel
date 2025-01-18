@@ -13,6 +13,10 @@ import { UserProfesionalModule } from './user-profesional/user-profesional.modul
 import { AtencionController } from './atencion/atencion.controller';
 import { AtencionModule } from './atencion/atencion.module';
 import { AuthModule } from './auth/auth.module';
+import { MailerModule } from '@nestjs-modules/mailer';
+import { join } from 'path';
+import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
+
 
 @Module({
   imports: [MongooseModule.forRoot(
@@ -24,6 +28,26 @@ import { AuthModule } from './auth/auth.module';
     UserProfesionalModule,
     AtencionModule,
     AuthModule,
+  MailerModule.forRoot({
+    transport: {
+      host: 'smtp.example.com',
+      port: 587,
+      auth: {
+        user: 'user@example.com',
+        pass: 'password',
+      },
+    },
+    defaults: {
+      from: '"No Reply" <noreply@example.com>',
+    },
+    template: {
+      dir: join(__dirname, 'templates'),
+      adapter: new HandlebarsAdapter(),
+      options: {
+        strict: true,
+      },
+    },
+  }),
   ],
   controllers: [AppController, UserExtendController, AtencionController],
   providers: [AppService, PostService, UserProfesionalService],

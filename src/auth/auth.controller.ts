@@ -24,4 +24,9 @@ export class AuthController {
     return 'perfil';
   }
 
+  /*   @Get('verify/:token')
+    async verifyUser(@Param('token') token: string) {
+      return this.authService.verifyUserByToken(token);
+    } */
+
 }

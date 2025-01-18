@@ -10,8 +10,8 @@ export class UserComunController {
 
     @Get()
     @ApiOperation({ summary: 'Ejecución del servicio que muestra todos los usuarios' })
-    @UseGuards(JwtAuthGuard)
-    @ApiBearerAuth()
+    /*     @UseGuards(JwtAuthGuard)
+        @ApiBearerAuth() */
     async findAllComunUsers() {
         return this.userComunService.findAllComunUsers();
 

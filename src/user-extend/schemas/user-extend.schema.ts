@@ -1,39 +1,38 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 import { UserComun, tipeUSer } from '../../user-comun/schemas/user-comun.schema';
-import { Document } from 'mongoose';
+import { Document, Types } from 'mongoose';
 
 
 @Schema({ timestamps: true })
-export class UserExtend extends UserComun {
+export class UserExtend {
+
     @Prop()
-    telefono: string;
+    idUserComun: string;
 
-    @Prop({ type: [String], default: [] })
-    roles: string[];
+    @Prop({ type: Date })
+    fNacimiento: Date;
 
-    @Prop({ type: Boolean, default: false })
-    isVerified: boolean;
+    @Prop({ required: true })
+    nIdentificacion: string;
+
+    @Prop()
+    fContacto: string;
 
     @Prop({
         type: {
             calle: String,
+            numero: String,
             ciudad: String,
-            codigoPostal: String,
             pais: String
-        }
+        },
+        _id: false
     })
     direccion: {
         calle: string;
+        numero: string;
         ciudad: string;
-        codigoPostal: string;
         pais: string;
     };
-
-    @Prop({ type: Date })
-    fechaNacimiento: Date;
-
-    @Prop({ type: Map, of: String })
-    preferencias: Map<string, string>;
 }
 
 export type UserExtendDocument = UserExtend & Document;

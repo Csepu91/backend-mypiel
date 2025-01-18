@@ -25,7 +25,10 @@ export class UserComun {
     password: string;
 
     @Prop({ default: tipeUSer.COMUN })
-    tipe: tipeUSer;
+    RolTipe: tipeUSer;
+
+    @Prop({ type: Boolean, default: false })
+    isVerified: boolean;
 
 }
 

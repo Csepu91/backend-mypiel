@@ -2,7 +2,6 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { UserComun } from './schemas/user-comun.schema';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
-import { UpdateProductDto } from 'src/product/dtos/update-product.dto';
 import { UpdateUserComunDto } from './dtos/update-user-comun.dto';
 
 @Injectable()
@@ -22,5 +21,8 @@ export class UserComunService {
 
         return updatedUserComun;
     }
+
+
+
 
 }
