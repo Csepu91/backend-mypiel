@@ -1,4 +1,4 @@
-import { IsString, IsNotEmpty, IsNumber, IsEnum, IsOptional } from 'class-validator';
+import { IsEnum } from 'class-validator';
 import { tipeUSer } from '../schemas/user-comun.schema';
 
 export class UpdateUserComunDto {

@@ -10,7 +10,6 @@ import {
 } from '@nestjs/common';
 import { ProductService } from './product.service';
 import { CreateProductDto } from './dtos/create-product.dto';
-import { UpdateProductDto } from './dtos/update-product.dto';
 import { ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
@@ -20,9 +19,15 @@ export class ProductController {
     constructor(private productService: ProductService) { }
 
     @Post()
-    @ApiOperation({ summary: 'Aplicación del servicio de creación de productos' })
+    @ApiOperation({ summary: 'Ejecución del servicio de creación de productos' })
     async create(@Body() createProduct: CreateProductDto) {
         return this.productService.create(createProduct);
+    }
+
+    @Post('multiple')
+    @ApiOperation({ summary: 'Ejecución del servicio de creación de múltiples productos' })
+    async createMany(@Body() createProducts: CreateProductDto[]) {
+        return this.productService.createMany(createProducts);
     }
 
     @Get()

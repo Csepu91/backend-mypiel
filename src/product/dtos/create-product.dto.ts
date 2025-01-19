@@ -1,6 +1,4 @@
-import { IsString, IsNotEmpty, IsOptional, IsEnum, IsUrl } from 'class-validator';
-import { productEstado } from '../schemas/product.schema';
-
+import { IsString, IsOptional, IsUrl } from 'class-validator';
 
 export class CreateProductDto {
 
@@ -10,13 +8,16 @@ export class CreateProductDto {
     @IsString()
     marca: string;
 
+    @IsString()
+    empresa: string;
+
     @IsOptional()
     @IsString({ each: true })
     pActivo?: string[];
 
     @IsOptional()
     @IsString({ each: true })
-    enfermedad?: string[];
+    usos?: string[];
 
     @IsUrl()
     urlImagen: string;

@@ -1,7 +1,6 @@
-import { IsString, IsNotEmpty, IsDate, ValidateNested, IsEmail, IsOptional, IsMongoId } from 'class-validator';
-import { CreateUserComunDto } from '../../user-comun/dtos/create-user-comun.dto';
+import { IsString, IsNotEmpty, IsDate, ValidateNested, IsEmail, IsOptional, } from 'class-validator';
 import { Type } from 'class-transformer';
-import { Types } from 'mongoose';
+
 
 class DireccionDto {
     @IsString()

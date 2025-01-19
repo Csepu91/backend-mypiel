@@ -16,6 +16,7 @@ import { AuthModule } from './auth/auth.module';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { join } from 'path';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
+import { ProductUsadoModule } from './product-usado/product-usado.module';
 
 
 @Module({
@@ -48,6 +49,7 @@ import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handleba
       },
     },
   }),
+  ProductUsadoModule,
   ],
   controllers: [AppController, UserExtendController, AtencionController],
   providers: [AppService, PostService, UserProfesionalService],

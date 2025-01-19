@@ -1,12 +1,6 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 
 
-export enum productEstado {
-    IN_USE = 'IN_USE',
-    ON_DISPLAY = 'ON_DISPLAY',
-}
-
-
 @Schema({ timestamps: true })
 export class Product {
 
@@ -16,17 +10,20 @@ export class Product {
     @Prop()
     marca: string;
 
+    @Prop()
+    empresa: string;
+
     @Prop([String])
     pActivo: string[];
 
     @Prop([String])
-    enfermedad: string[];
+    usos: string[];
 
     @Prop()
     urlImagen: string;
 
-    @Prop({ default: productEstado.ON_DISPLAY })
-    estado: productEstado;
 }
+
+export type ProductDocument = Product & Document;
 
 export const ProductSchema = SchemaFactory.createForClass(Product);

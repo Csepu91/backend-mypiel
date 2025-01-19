@@ -1,6 +1,6 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 import { UserComun, tipeUSer } from '../../user-comun/schemas/user-comun.schema';
-import { Document, Types } from 'mongoose';
+import { Document } from 'mongoose';
 
 
 @Schema({ timestamps: true })

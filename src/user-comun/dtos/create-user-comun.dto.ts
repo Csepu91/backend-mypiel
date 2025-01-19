@@ -1,9 +1,7 @@
-import { Type } from 'class-transformer';
-import { IsString, IsNotEmpty, IsNumber, IsOptional, IsEmail, IsDate, ValidateNested } from 'class-validator';
+import { IsString, IsNotEmpty, IsOptional, IsEmail } from 'class-validator';
 
 
 export class CreateUserComunDto {
-
 
     @IsString()
     @IsNotEmpty()
