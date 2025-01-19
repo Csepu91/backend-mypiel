@@ -69,7 +69,7 @@ export class ProductService {
                 { nombre: { $regex: text, $options: 'i' } },
                 { marca: { $regex: text, $options: 'i' } },
                 { pActivo: { $regex: text, $options: 'i' } },
-                { enfermedad: { $regex: text, $options: 'i' } }
+                { usos: { $regex: text, $options: 'i' } }
             ]
         }).exec();
 
