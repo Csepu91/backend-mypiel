@@ -9,7 +9,7 @@ export class CreatePostDto {
     idProductUsed?: string;
 
     @IsString()
-    body: string;
+    descripcion: string;
 
     @IsNumber()
     valoracion: number;

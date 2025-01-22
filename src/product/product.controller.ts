@@ -30,7 +30,7 @@ export class ProductController {
         return this.productService.createMany(createProducts);
     }
 
-    @Get()
+    @Get('/all')
     @ApiOperation({ summary: 'Ejecución del servicio que muestra todos los productos' })
     async findAll() {
         return this.productService.findAll();

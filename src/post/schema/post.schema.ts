@@ -12,7 +12,7 @@ export class Post {
     idProductUsed: string;
 
     @Prop({ required: true })
-    body: string;
+    descripcion: string;
 
     @Prop()
     valoracion: number;
