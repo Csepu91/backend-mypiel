@@ -17,11 +17,14 @@ import { MailerModule } from '@nestjs-modules/mailer';
 import { join } from 'path';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
 import { ProductUsadoModule } from './product-usado/product-usado.module';
+import { ConfigModule } from '@nestjs/config';
 
 
 @Module({
-  imports: [MongooseModule.forRoot(
-    'mongodb+srv://cristobalsepulvedae:Croses098.@clustermypiel.2mmbb.mongodb.net/mypielprueba?retryWrites=true&w=majority&appName=ClusterMyPiel'),
+  imports: [
+    ConfigModule.forRoot(),
+    MongooseModule.forRoot(
+      'mongodb+srv://cristobalsepulvedae:Croses098.@clustermypiel.2mmbb.mongodb.net/mypielprueba?retryWrites=true&w=majority&appName=ClusterMyPiel'),
     ProductModule,
     UserComunModule,
     PostModule,
@@ -29,27 +32,27 @@ import { ProductUsadoModule } from './product-usado/product-usado.module';
     UserProfesionalModule,
     AtencionModule,
     AuthModule,
-  MailerModule.forRoot({
-    transport: {
-      host: 'smtp.example.com',
-      port: 587,
-      auth: {
-        user: 'user@example.com',
-        pass: 'password',
+    MailerModule.forRoot({
+      transport: {
+        host: 'smtp.example.com',
+        port: 587,
+        auth: {
+          user: 'user@example.com',
+          pass: 'password',
+        },
       },
-    },
-    defaults: {
-      from: '"No Reply" <noreply@example.com>',
-    },
-    template: {
-      dir: join(__dirname, 'templates'),
-      adapter: new HandlebarsAdapter(),
-      options: {
-        strict: true,
+      defaults: {
+        from: '"No Reply" <noreply@example.com>',
       },
-    },
-  }),
-  ProductUsadoModule,
+      template: {
+        dir: join(__dirname, 'templates'),
+        adapter: new HandlebarsAdapter(),
+        options: {
+          strict: true,
+        },
+      },
+    }),
+    ProductUsadoModule,
   ],
   controllers: [AppController, UserExtendController, AtencionController],
   providers: [AppService, PostService, UserProfesionalService],
