@@ -8,7 +8,7 @@ export class UserExtendController {
     constructor(private readonly userExtendService: UserExtendService) { }
 
     @Post()
-    @ApiOperation({ summary: 'Incorpora datos de usuario extendido' })
+    @ApiOperation({ summary: 'Incorpora datos de usuario extendido y actualiza rol de userComun' })
     async create(@Body() createUserExtendDto: CreateUserExtendDto) {
         return this.userExtendService.create(createUserExtendDto);
     }

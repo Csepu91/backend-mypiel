@@ -18,15 +18,10 @@ export class AuthController {
     return this.authService.login(loginAuthDto);
   }
 
-  @Get('perfil')
+
+  @Get('validate')
   @UseGuards(JwtAuthGuard)
-  getProfile() {
-    return 'perfil';
+  validateToken() {
+    return { isValid: true };
   }
-
-  /*   @Get('verify/:token')
-    async verifyUser(@Param('token') token: string) {
-      return this.authService.verifyUserByToken(token);
-    } */
-
 }

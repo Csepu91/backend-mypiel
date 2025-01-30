@@ -31,6 +31,8 @@ export class UserExtendService {
             ...createUserExtendDto,
         });
 
+
+
         console.log(createdUserExtend);
 
         return createdUserExtend.save();

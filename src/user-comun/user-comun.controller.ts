@@ -17,7 +17,7 @@ export class UserComunController {
 
     }
 
-    @Put(':id')
+    @Put('update/:id')
     @ApiOperation({ summary: 'Ejecución del servicio que modifica el usuario identificado por id' })
     async update(@Param('id') id: string, @Body() UpdateUserComunDto: UpdateUserComunDto) {
         return this.userComunService.update(id, UpdateUserComunDto);

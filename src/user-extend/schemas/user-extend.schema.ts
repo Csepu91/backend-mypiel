@@ -16,22 +16,6 @@ export class UserExtend {
 
     @Prop()
     fContacto: string;
-
-    /*     @Prop({
-            type: {
-                calle: String,
-                numero: String,
-                ciudad: String,
-                pais: String
-            },
-            _id: false
-        })
-        direccion: {
-            calle: string;
-            numero: string;
-            ciudad: string;
-            pais: string;
-        }; */
 }
 
 export type UserExtendDocument = UserExtend & Document;
