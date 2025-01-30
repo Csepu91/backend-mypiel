@@ -9,7 +9,7 @@ export class Post {
     idUserComun: string;
 
     @Prop()
-    idProductUsed: string;
+    idProductUsado: string;
 
     @Prop({ required: true })
     descripcion: string;

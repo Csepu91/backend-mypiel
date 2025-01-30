@@ -2,7 +2,8 @@ import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 
 export enum tipeUSer {
     COMUN = 'COMUN',
-    EXTEND = 'EXTEND',
+    EXTEND = 'EXTENDIDO',
+    PROFESIONAL = 'PROFESIONAL'
 }
 
 @Schema({ timestamps: true })
@@ -25,10 +26,10 @@ export class UserComun {
     password: string;
 
     @Prop({ default: tipeUSer.COMUN })
-    RolTipe: tipeUSer;
+    rolTipe: tipeUSer;
 
-    @Prop({ type: Boolean, default: false })
-    isVerified: boolean;
+    /*     @Prop({ type: Boolean, default: false })
+        isVerified: boolean; */
 
 }
 

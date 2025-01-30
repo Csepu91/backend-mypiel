@@ -1,5 +1,4 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
-import { UserComun, tipeUSer } from '../../user-comun/schemas/user-comun.schema';
 import { Document } from 'mongoose';
 
 
@@ -18,21 +17,21 @@ export class UserExtend {
     @Prop()
     fContacto: string;
 
-    @Prop({
-        type: {
-            calle: String,
-            numero: String,
-            ciudad: String,
-            pais: String
-        },
-        _id: false
-    })
-    direccion: {
-        calle: string;
-        numero: string;
-        ciudad: string;
-        pais: string;
-    };
+    /*     @Prop({
+            type: {
+                calle: String,
+                numero: String,
+                ciudad: String,
+                pais: String
+            },
+            _id: false
+        })
+        direccion: {
+            calle: string;
+            numero: string;
+            ciudad: string;
+            pais: string;
+        }; */
 }
 
 export type UserExtendDocument = UserExtend & Document;

@@ -7,7 +7,7 @@ export class CreateProductUsadoDto {
     idUserComun: string;
 
     @IsOptional()
-    idProducto: string;
+    idProduct: string;
 
     @IsDate()
     @IsOptional()

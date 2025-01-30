@@ -12,7 +12,7 @@ export class ProductUsado {
     idUserComun: string;
 
     @Prop()
-    idProducto: string;
+    idProduct: string;
 
     @Prop()
     expirationDate: Date;

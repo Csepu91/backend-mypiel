@@ -6,7 +6,7 @@ import { UserComun, UserComunDocument, } from 'src/user-comun/schemas/user-comun
 import { compare, hash } from 'bcrypt';
 import { Model } from 'mongoose';
 import { JwtService } from '@nestjs/jwt';
-import { MailerService } from '@nestjs-modules/mailer';
+/* import { MailerService } from '@nestjs-modules/mailer'; */
 
 
 
@@ -17,7 +17,7 @@ export class AuthService {
     @InjectModel(UserComun.name)
     private readonly userComunModel: Model<UserComunDocument>,
     private readonly jwtService: JwtService,
-    private readonly mailerService: MailerService
+    /*   private readonly mailerService: MailerService */
   ) { }
 
 
@@ -32,47 +32,18 @@ export class AuthService {
 
     const plainToHash = await hash(password, 10);
 
-    /*
-    const payload = { correo: findUserComun.correo };
- const RegisterToken = await this.jwtService.signAsync(payload); */
+    /*const payload = { correo: findUserComun.correo };
+      const RegisterToken = await this.jwtService.signAsync(payload); */
 
     registerAuthDto = { ...registerAuthDto, password: plainToHash };
 
     const newUser = await this.userComunModel.create(registerAuthDto);
 
-    /*     await this.sendVerificationEmail(newUser.correo, RegisterToken); */
+    /*await this.sendVerificationEmail(newUser.correo, RegisterToken); */
 
     return newUser;
   }
 
-  /*   async sendVerificationEmail(email: string, token: string) {
-      const url = `http://localhost:3000/auth/verify/${token}`;
-      // Aquí deberías implementar la lógica para enviar el correo electrónico
-      console.log(`Enviar correo a ${email} con el enlace de verificación: ${url}`);
-  
-      await this.mailerService.sendMail({
-        to: email,
-        subject: 'Verificación de cuenta',
-        template: './verification', // La plantilla del correo electrónico
-        context: {
-          url,
-        },
-      });
-    } */
-
-  /*   async verifyUserByToken(token: string): Promise<UserComun> {
-      const user = await this.userComunModel.findOneAndUpdate(
-        { RegisterToken: token },
-        { isVerified: true, RegisterToken: null },
-        { new: true }
-      ).exec();
-  
-      if (!user) {
-        throw new NotFoundException(`Token de verificación no válido`);
-      }
-  
-      return user;
-    } */
 
   async login(loginAuthDto: LoginAuthDto) {
     const { correo, password } = loginAuthDto;
@@ -100,5 +71,34 @@ export class AuthService {
 
     return data;
   }
+  /*   async sendVerificationEmail(email: string, token: string) {
+    const url = `http://localhost:3000/auth/verify/${token}`;
+    // Aquí deberías implementar la lógica para enviar el correo electrónico
+    console.log(`Enviar correo a ${email} con el enlace de verificación: ${url}`);
+ 
+    await this.mailerService.sendMail({
+      to: email,
+      subject: 'Verificación de cuenta',
+      template: './verification', // La plantilla del correo electrónico
+      context: {
+        url,
+      },
+    });
+  } */
 
+  /*   async verifyUserByToken(token: string): Promise<UserComun> {
+      const user = await this.userComunModel.findOneAndUpdate(
+        { RegisterToken: token },
+        { isVerified: true, RegisterToken: null },
+        { new: true }
+      ).exec();
+  
+      if (!user) {
+        throw new NotFoundException(`Token de verificación no válido`);
+      }
+  
+      return user;
+    } */
 }
+
+

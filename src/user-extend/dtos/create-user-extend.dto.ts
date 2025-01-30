@@ -1,7 +1,7 @@
 import { IsString, IsNotEmpty, IsDate, ValidateNested, IsEmail, IsOptional, } from 'class-validator';
 import { Type } from 'class-transformer';
 
-
+/* 
 class DireccionDto {
     @IsString()
     calle: string;
@@ -14,7 +14,7 @@ class DireccionDto {
 
     @IsString()
     pais: string;
-}
+} */
 
 export class CreateUserExtendDto {
 
@@ -38,7 +38,7 @@ export class CreateUserExtendDto {
     @IsNotEmpty()
     fContacto: string;
 
-    @ValidateNested()
-    @Type(() => DireccionDto)
-    direccion?: DireccionDto;
+    /*     @ValidateNested()
+        @Type(() => DireccionDto)
+        direccion?: DireccionDto; */
 }

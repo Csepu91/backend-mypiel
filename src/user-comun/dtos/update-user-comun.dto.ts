@@ -4,7 +4,7 @@ import { tipeUSer } from '../schemas/user-comun.schema';
 export class UpdateUserComunDto {
 
     @IsEnum(tipeUSer)
-    RolTipe: tipeUSer = tipeUSer.EXTEND;
+    rolTipe: tipeUSer = tipeUSer.EXTEND;
 
 }
 
