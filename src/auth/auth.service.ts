@@ -56,11 +56,13 @@ export class AuthService {
     const payload = { correo: findUserComun.correo };
 
     const rolTipe = findUserComun.rolTipe;
+    const idUserComun = findUserComun._id;
 
     const LoginToken = await this.jwtService.signAsync(payload);
 
     const data = {
       correo,
+      idUserComun,
       rolTipe,
       LoginToken,
     };
